@@ -1,6 +1,6 @@
-# Simple Counter Contract Replication
+# Simple Counter Contract Replication. Artifact bug.
 
-This repository includes a simple counter contract and a counter with a token dependency for replication. The project demonstrates how adding a dependency in the `Nargo.toml` affects the generated TypeScript storage layout in Aztec v0.54.0.
+This repository includes a simple counter contract and a counter with a token dependency for replication. The project demonstrates how adding the token dependency in the `Nargo.toml` affects the generated TypeScript storage layout in Aztec v0.54.0.
 
 ## Folder Structure
 
