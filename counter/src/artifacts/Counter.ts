@@ -3,6 +3,7 @@
 
 /* eslint-disable */
 import {
+  type AbiType,
   AztecAddress,
   type AztecAddressLike,
   CompleteAddress,
@@ -14,6 +15,7 @@ import {
   type ContractMethod,
   type ContractStorageLayout,
   type ContractNotes,
+  decodeFromAbi,
   DeployMethod,
   EthAddress,
   type EthAddressLike,
@@ -27,6 +29,7 @@ import {
   NoteSelector,
   Point,
   type PublicKey,
+  type UnencryptedL2Log,
   type Wallet,
   type WrappedFieldLike,
 } from '@aztec/aztec.js';
@@ -116,7 +119,7 @@ export class CounterContract extends ContractBase {
   public static get notes(): ContractNotes<'ValueNote'> {
     return {
       ValueNote: {
-          id: new NoteSelector(1900156023),
+          id: new NoteSelector(1038582377),
         }
     } as ContractNotes<'ValueNote'>;
   }

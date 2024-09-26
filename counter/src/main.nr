@@ -1,24 +1,28 @@
+use dep::aztec::macros::aztec;
+
+#[aztec]
 contract Counter {
 
     use dep::aztec::prelude::{AztecAddress, Map};
     use dep::value_note::{balance_utils, value_note::{ValueNote, VALUE_NOTE_LEN}};
     use dep::easy_private_state::EasyPrivateUint;
+    use aztec::macros::{storage::storage, functions::{initializer, private}};
 
     //this seems to act like a map in solidity
-    #[aztec(storage)]
-    struct Storage {
-        counters: Map<AztecAddress, EasyPrivateUint>,
+    #[storage]
+    struct Storage<Context> {
+        counters: Map<AztecAddress, EasyPrivateUint<Context>, Context>,
     }
 
-    #[aztec(private)]
-    #[aztec(initializer)]
+    #[private]
+    #[initializer]
     // We can name our initializer anything we want as long as it's marked as aztec(initializer)
     fn initialize(headstart: u64, owner: AztecAddress, outgoing_viewer: AztecAddress) {
         let counters = storage.counters;
         counters.at(owner).add(headstart, owner, outgoing_viewer);
     }
 
-    #[aztec(private)]
+    #[private]
     fn increment(owner: AztecAddress, outgoing_viewer: AztecAddress) {
         dep::aztec::oracle::debug_log::debug_log_format("Incrementing counter for owner {0}", [owner.to_field()]);
         let counters = storage.counters;

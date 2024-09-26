@@ -3,6 +3,7 @@
 
 /* eslint-disable */
 import {
+  type AbiType,
   AztecAddress,
   type AztecAddressLike,
   CompleteAddress,
@@ -14,6 +15,7 @@ import {
   type ContractMethod,
   type ContractStorageLayout,
   type ContractNotes,
+  decodeFromAbi,
   DeployMethod,
   EthAddress,
   type EthAddressLike,
@@ -27,6 +29,7 @@ import {
   NoteSelector,
   Point,
   type PublicKey,
+  type UnencryptedL2Log,
   type Wallet,
   type WrappedFieldLike,
 } from '@aztec/aztec.js';
@@ -137,18 +140,18 @@ decimals: {
     }
     
 
-  public static get notes(): ContractNotes<'ValueNote' | 'TransparentNote' | 'TokenNote'> {
+  public static get notes(): ContractNotes<'TransparentNote' | 'TokenNote' | 'ValueNote'> {
     return {
-      ValueNote: {
-          id: new NoteSelector(1900156023),
-        },
-TransparentNote: {
-          id: new NoteSelector(1049878767),
+      TransparentNote: {
+          id: new NoteSelector(3193649735),
         },
 TokenNote: {
-          id: new NoteSelector(3992089675),
+          id: new NoteSelector(2350566847),
+        },
+ValueNote: {
+          id: new NoteSelector(1038582377),
         }
-    } as ContractNotes<'ValueNote' | 'TransparentNote' | 'TokenNote'>;
+    } as ContractNotes<'TransparentNote' | 'TokenNote' | 'ValueNote'>;
   }
   
 
